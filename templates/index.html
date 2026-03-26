@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Date Image Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f6f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: #fff;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      width: 100%;
+      max-width: 420px;
+    }
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 24px;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #111;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.92;
+    }
+
+    .error {
+      color: #c62828;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    .note {
+      margin-top: 14px;
+      font-size: 13px;
+      color: #555;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Date Image Generator</h1>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+      <label for="month">Month</label>
+      <input
+        type="text"
+        id="month"
+        name="month"
+        placeholder="January"
+        value="{{ month if month else '' }}"
+        required
+      />
+
+      <label for="year">Year</label>
+      <input
+        type="number"
+        id="year"
+        name="year"
+        placeholder="2026"
+        value="{{ year if year else '' }}"
+        required
+      />
+
+      <button type="submit">Generate ZIP</button>
+    </form>
+
+    <div class="note">
+      Enter full month name and year. The ZIP will download automatically.
+    </div>
+  </div>
+</body>
+</html>
